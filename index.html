@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prediksi Roulette</title>
+    <title>Prediksi Roullate & Greedy Nimo</title>
     <style>
       * {
         padding: 0;
@@ -12,207 +12,73 @@
         font-family: sans-serif;
       }
 
-      form {
+      nav {
+        background-color: aquamarine;
+        padding: 10px;
+      }
+
+      .wrapper {
         display: flex;
-        width: 50%;
-        justify-content: center;
-        flex-direction: column;
-        padding: 20px;
-        border: 1px solid #ddd;
-        margin-top: 200px;
-        border-radius: 10px;
+        justify-content: space-between;
+        align-items: center;
+        width: 1360px;
+        margin: 0 auto;
+        padding: 10px;
       }
 
-      input[type="number"] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-      button {
-        width: 100%;
-        background-color: #4caf50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      .center-form {
+      ul {
+        list-style: none;
         display: flex;
         align-items: center;
-        justify-content: center;
       }
-      .center-result {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
-        margin: 10px 10px;
-      }
-      #results {
-        text-align: center;
-        display: flex;
-        gap: 30px;
-        flex-direction: column;
-        padding: 20px;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        width: 50%;
-        margin-bottom: 10px;
-      }
-      #next-target {
-        text-align: center;
-        padding: 20px;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        width: 50%;
-        margin-top: 10px;
-      }
-      #result-target {
-        text-align: center;
-        margin-top: 10px;
-      }
-      .red {
-        font-weight: bold;
-        width: 50%;
-        font-size: 16px;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: red;
-        color: white;
+      li a {
+        text-decoration: none;
+        margin: 10px;
+        color: #000;
       }
 
-      .black {
-        font-weight: bold;
-        font-size: 16px;
-        width: 50%;
-        padding: 20px;
-        border-radius: 10px;
-        color: white;
-        background-color: black;
+      li a:hover {
+        color: #7a7a7a;
       }
 
-      .green {
-        font-weight: bold;
-        font-size: 16px;
+      .desc {
         width: 50%;
-        padding: 20px;
-        border-radius: 10px;
-        color: white;
-        background-color: green;
+        margin: 0 auto;
+      }
+
+      .desc h1 {
+        text-align: center;
+        letter-spacing: 5px;
+        line-height: 50px;
+        margin-top: 100px;
+        font-size: 40px;
+      }
+
+      .desc p {
+        text-align: center;
+        margin-top: 20px;
+        color: #7f0404;
+        font-weight: bold;
+        font-size: 18px;
       }
     </style>
   </head>
   <body>
-    <div class="center-form">
-      <form>
-        <h2 style="text-align: center; margin-bottom: 20px">
-          PREDIKSI ROULETTE LITE
-        </h2>
-        <label>Masukan Result Angka Terakhir:</label>
-        <input
-          type="number"
-          id="result-input"
-          placeholder="Masukan angka 0 - 36"
-          min="0"
-          max="36"
-        />
-        <button type="button" id="submit-result">Cek Prediksi</button>
-      </form>
-    </div>
-    <div class="center-result">
-      <div id="results"></div>
-      <div id="next-target"></div>
-      <div id="result-target">
-        <span id="result-type"></span>
-      </div>
+    <nav>
+      <section class="wrapper">
+        <div class="logo">
+          <h3>Prediksi Juday Nimo TV</h3>
+        </div>
+        <ul>
+          <li><a href="greedy.html">Prediksi Greedy</a></li>
+          <li><a href="roulette.html">Prediksi Roulette</a></li>
+        </ul>
+      </section>
+    </nav>
+    <div class="desc">
+      <h1>SELAMAT DATANG</h1>
+      <p>Prediksi Slot - Comming Soon</p>
+      <p>@CopyRight By WINGS FAMS</p>
     </div>
   </body>
-  <script>
-    const rouletteData = {
-      target: Math.floor(Math.random() * 36),
-      play: false,
-      random: Math.floor(Math.random() * 200),
-    };
-    let countdown = 20;
-    let intervalId;
-    let results = [];
-
-    function nextTarget() {
-      let target = rouletteData.target;
-      let ln = rouletteData.random;
-      //logika untuk menentukan target selanjutnya
-      target = (target + ln) % 36;
-      rouletteData.target = target;
-      return target;
-    }
-
-    function startCountdown() {
-      intervalId = setInterval(function () {
-        countdown--;
-        console.log(countdown + " seconds remaining");
-        if (countdown <= 0) {
-          clearInterval(intervalId);
-          rouletteData.play = false;
-          console.log("Countdown finished. Target: " + rouletteData.target);
-        }
-      }, 1000);
-    }
-
-    function startPlay() {
-      rouletteData.play = true;
-      countdown = 20;
-      console.log("Starting countdown...");
-      startCountdown();
-    }
-
-    // Event listener untuk menangkap input dari form
-    let nextTargetDiv = document.querySelector("#next-target");
-    document
-      .querySelector("#submit-result")
-      .addEventListener("click", function () {
-        let result = document.querySelector("#result-input").value;
-        results.push(result);
-        console.log("Result submitted: " + result);
-        console.log("All results: " + results);
-        document.querySelector("#results").innerHTML +=
-          " Result Input : " + result;
-        if (results.length > 1) {
-          if (nextTargetDiv)
-            nextTargetDiv.innerHTML = "Next target: " + nextTarget();
-        }
-        if (results.length === 1) {
-          console.log("Starting the game...");
-          startPlay();
-        }
-      });
-    let resultTargetDiv = document.querySelector("#result-target");
-    let resultTypeSpan = document.querySelector("#result-type");
-    setInterval(function () {
-      if (rouletteData.play) {
-        let lastTarget = rouletteData.target;
-        if (resultTargetDiv && resultTypeSpan) {
-          if (lastTarget === 0) {
-            resultTargetDiv.classList.add("green");
-            resultTypeSpan.innerHTML = " - Genap";
-          } else if (lastTarget % 2 === 0) {
-            resultTargetDiv.classList.add("black");
-            resultTypeSpan.innerHTML = " - Genap";
-          } else {
-            resultTargetDiv.classList.add("red");
-            resultTypeSpan.innerHTML = " - Ganjil";
-          }
-          resultTargetDiv.innerHTML = "Result target: " + lastTarget;
-        }
-      }
-    }, 1000);
-  </script>
 </html>
