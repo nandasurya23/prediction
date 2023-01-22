@@ -1,0 +1,36 @@
+#loading-container {
+  display: none;
+}
+
+#results-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.result {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+.result.even {
+  background-color: black;
+  color: white;
+}
+
+.result.odd {
+  background-color: red;
+  color: white;
+}
+
+.result.green {
+  background-color: green;
+  color: white;
+}
