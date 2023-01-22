@@ -76,8 +76,31 @@ class Roulette {
         } else {
             this.result4.classList.add("odd");
         }
+
+        let previousResults = JSON.parse(localStorage.getItem("previousResults")) || []
+        let newResults = [result1, result2, result3, result4]
+        previousResults.push(newResults)
+        localStorage.setItem("previousResults", JSON.stringify(previousResults))
+        this.displayPreviousResults()
     }
+    displayPreviousResults() {
+        let previousResults = JSON.parse(localStorage.getItem("previousResults"))
+        let previousResultsElem = document.getElementById("previous-results")
+        previousResultsElem.innerHTML = ""
+        previousResults.forEach(resultArr => {
+            let newRow = document.createElement("tr")
+            resultArr.forEach(result => {
+                let newResult = document.createElement("td")
+                newResult.innerHTML = result;
+                newRow.appendChild(newResult)
+            })
+            previousResultsElem.appendChild(newRow)
+        })
+    }
+
+
 }
+
 
 
 let roulette = new Roulette();
