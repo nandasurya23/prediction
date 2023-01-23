@@ -40,10 +40,10 @@ class Roulette {
     showResults() {
         this.loadingContainer.style.display = "none";
         let previousResult = parseInt(this.resultInput.value);
-        let result1 = (previousResult + Math.floor(Math.random() * 36)) % 36;
-        let result2 = (previousResult + Math.floor(Math.random() * 36)) % 36;
-        let result3 = (previousResult + Math.floor(Math.random() * 36)) % 36;
-        let result4 = (previousResult + Math.floor(Math.random() * 36)) % 36;
+        let result1 = (previousResult + Math.floor(Math.random() * 37)) % 37;
+        let result2 = (previousResult + Math.floor(Math.random() * 37)) % 37;
+        let result3 = (previousResult + Math.floor(Math.random() * 37)) % 37;
+        let result4 = (previousResult + Math.floor(Math.random() * 37)) % 37;
         this.result1.innerHTML = result1;
         this.result2.innerHTML = result2;
         this.result3.innerHTML = result3;
