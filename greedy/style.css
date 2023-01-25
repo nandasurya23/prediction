@@ -19,7 +19,8 @@ img {
 
 #fruit-prediction img,
 #meat-prediction img,
-#greedy-prediction img {
+#greedy-prediction img,
+#box-prediction img {
   width: 150px;
   height: 150px;
   background: linear-gradient(to bottom right, #ffff00, #e19f04);
